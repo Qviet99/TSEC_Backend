@@ -68,4 +68,4 @@ mongoose.connect(process.env.DB_CONNECTION, () => {
   console.log('connected to mongoose')
 });
 
-app.listen(3000);
+app.listen(4000);
