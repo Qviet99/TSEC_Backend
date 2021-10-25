@@ -23,7 +23,7 @@ import questionRouter from './src/api/routes/questionRouter.js';
 import exerciseRouter from './src/api/routes/exerciseRouter.js';
 import examRouter from './src/api/routes/examRouter.js';
 import courseRouter from './src/api/routes/courseRouter.js';
-import generalCourseRouter from './src/api/routes/generalCourseRouter';
+import generalCourseRouter from './src/api/routes/generalCourseRouter.js';
 
 app.use(function (req, res, next) {
   console.info('REQUEST', req.method, req.url, req.body);

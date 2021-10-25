@@ -20,7 +20,8 @@ const courseController = {
 
   //Read All
   getAllCourse: async(req, res , next) => {
-    const result = await courseService.getAllCourse();
+    const {levelId} = req.query;
+    const result = await courseService.getAllCourse(levelId);
 
     return res.send(result);
   },

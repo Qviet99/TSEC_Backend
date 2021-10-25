@@ -19,8 +19,10 @@ const courseRepository = {
     return result;
   },
 
-  getAllCourse: async() => {
-    const result = await Course.find();
+  getAllCourse: async(levelId) => {
+    let query = null;
+    if (levelId) query = {levelId};
+    const result = await Course.find(query);
 
     return result;
   },

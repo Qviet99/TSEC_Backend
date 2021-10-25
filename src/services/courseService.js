@@ -40,8 +40,8 @@ const courseService = {
     };
   },
 
-  getAllCourse: async() => {
-    const result = await courseRepository.getAllCourse();
+  getAllCourse: async(levelId) => {
+    const result = await courseRepository.getAllCourse(levelId);
       
     return {
       status: Status.Success,
