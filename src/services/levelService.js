@@ -1,15 +1,23 @@
 import levelRepository from '../data/repositories/levelRepository.js';
 import {Status} from '../api/status.js';
-import {isNumber} from '../utils/number.js';
 
 const levelService = {
   createLevel: async(level) => {
-    const {levelMinPoint, levelMaxPoint} = level;
+    const {levelName, levelMinPoint, levelMaxPoint} = level;
 
     if (levelMaxPoint <= levelMinPoint) {
       return {
         status: Status.Fail,
         message: 'Max point must higher than min point',
+      };
+    }
+
+    const levelNameExist = await levelRepository.getLevelByName(levelName);
+
+    if (levelNameExist) {
+      return {
+        status: Status.Fail,
+        message: `Level with name ${levelName} already exist`,
       };
     }
 

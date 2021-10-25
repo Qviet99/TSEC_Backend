@@ -7,6 +7,12 @@ const levelRepository = {
     return result;
   },
 
+  getLevelByName: async(levelName) => {
+    const result = await Level.findOne({levelName});
+
+    return result;
+  },
+
   getLevelById: async(levelId) => {
     const result = await Level.findById(levelId);
 

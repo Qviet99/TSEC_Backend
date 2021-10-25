@@ -63,6 +63,7 @@ export const JoiValidationSchema = {
   .options({abortEarly: false}),
 
   level: Joi.object({
+    levelName: Joi.string().required(),
     levelMinPoint: Joi.number().min(0).required(),
     levelMaxPoint: Joi.number().min(1).required(),
   })
