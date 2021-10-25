@@ -31,12 +31,12 @@ app.use(function (req, res, next) {
 
 
 app.use('/api/auth', authRouter);
+app.use('/api/levels', levelRouter);
 app.use(isAuth);
 app.use(withCurrentAuth);
 app.use('/api/accounts', adminRouter);
 app.use('/api/users', userRouter);
 app.use('/api/topics', topicRouter);
-app.use('/api/levels', levelRouter);
 app.use('/api/reports', reportRouter);
 app.use('/api/questions', questionRouter);
 app.use('/api/exercises', exerciseRouter);
