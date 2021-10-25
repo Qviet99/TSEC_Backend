@@ -21,7 +21,7 @@ const courseRepository = {
 
   getAllCourse: async(levelId) => {
     let query = null;
-    if (levelId) query = {levelId};
+    if (levelId) query = {courseLevelId: levelId};
     const result = await Course.find(query);
 
     return result;
