@@ -1,6 +1,5 @@
 import express from 'express';
 import courseController from '../controller/courseController.js';
-import {isAdmin} from '../middleware/isAdmin.js';
 import {wrapper} from '../../utils/routeWrapper.js';
 import {joiValidator, JoiSchema,  JoiValidationSchema} from '../middleware/joiMiddleware.js';
 
@@ -8,7 +7,7 @@ const router = express.Router();
 
 router.post('/', joiValidator(JoiValidationSchema.course, JoiSchema.course), wrapper(courseController.createCourse));
 
-router.get('/', isAdmin, wrapper(courseController.getAllCourse));
+router.get('/', wrapper(courseController.getAllCourse));
 
 router.get('/registeredCourses', wrapper(courseController.getAllRegisteredCourses));
 
