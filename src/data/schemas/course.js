@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const CourseSchema = new Schema({
   courseName: {type: String, required: true},
   courseDescription: {type: String, required: true},
+  courseThumbnail: {type: String},
   courseVideos: [{
     videoName: {type: String},
     videoUrl: {type: String},
