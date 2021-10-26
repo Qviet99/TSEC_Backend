@@ -62,7 +62,7 @@ const authService = {
       accountId: result._id,
       fullName: "",
       phoneNumber: "",
-      dayOfBirth: "",
+      dayOfBirth: new Date(),
       gender: "",
       address: "",
     }
