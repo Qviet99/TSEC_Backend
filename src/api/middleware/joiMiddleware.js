@@ -35,6 +35,7 @@ export const JoiValidationSchema = {
   course: Joi.object({
     courseName: Joi.string().required(),
     courseDescription: Joi.string().required(),
+    courseThumbnail: Joi.string().allow('', null),
     courseVideos: Joi.array().items(
       Joi.object().keys({
         videoName: Joi.string().required(),
