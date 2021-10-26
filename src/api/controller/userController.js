@@ -31,6 +31,7 @@ const userController = {
   updateUserInformation: async(req, res , next) => {
     const {id} = req.params;
     const {user} = req.body;
+    const {email} = req.body;
 
     if (id !== req.user._id && req.role !== 'Admin') {
       return res.send({
@@ -39,7 +40,7 @@ const userController = {
       });
     }
 
-    const result = await userService.updateUserInformation(id, user);
+    const result = await userService.updateUserInformation(id, user, email);
 
     return res.send(result);
   },
