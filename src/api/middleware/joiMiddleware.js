@@ -103,5 +103,6 @@ export const JoiValidationSchema = {
     address: Joi.string().allow('', null),
   })
   .required()
+  .unknown(true)
   .options({abortEarly: false}),
 }
