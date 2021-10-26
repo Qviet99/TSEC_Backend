@@ -8,13 +8,13 @@ const courseRepository = {
   },
 
   getCourseById: async(id) => {
-    const result = await Course.findById(id);
+    const result = await Course.findById(id).populate({ path: 'courseLevelId', select: 'levelName' }).populate({ path: 'owner', select: 'fullName'});
 
     return result;
   },
 
   getCourseByName: async(courseName) => {
-    const result = await Course.findOne({courseName});
+    const result = await Course.findOne({courseName}).populate({ path: 'courseLevelId', select: 'levelName' }).populate({ path: 'owner', select: 'fullName'});
 
     return result;
   },
@@ -28,19 +28,19 @@ const courseRepository = {
   },
 
   getAllRegisteredCourses: async(registeredCourses) => {
-    const result = await Course.find({_id: {$in: registeredCourses}});
+    const result = await Course.find({_id: {$in: registeredCourses}}).populate({ path: 'courseLevelId', select: 'levelName' }).populate({ path: 'owner', select: 'fullName'});
 
     return result;
   },
 
   getAllCourseOfUser: async(ownerId) => {
-    const result = await Course.find({ownerId});
+    const result = await Course.find({ownerId}).populate({ path: 'courseLevelId', select: 'levelName' }).populate({ path: 'owner', select: 'fullName'});
 
     return result;
   },
 
   getAllCourseByLevelId: async(courseLevelId) => {
-    const result = await Course.find({courseLevelId});
+    const result = await Course.find({courseLevelId}).populate({ path: 'courseLevelId', select: 'levelName' }).populate({ path: 'owner', select: 'fullName'});
 
     return result;
   },
