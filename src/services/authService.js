@@ -43,7 +43,9 @@ const authService = {
   },
   
   createAccount: async(account) => {
-    const {username} = account;
+    const {registerData, userData} = account;
+
+    const {username} = registerData
     
     const isAccountExist = await authRepository.getAccountByUsername(username);
 
@@ -54,7 +56,18 @@ const authService = {
       };
     }
 
-    const result = await authRepository.createAccount(account);
+    const result = await authRepository.createAccount({...registerData, role: 'learner'});
+
+    const user = {
+      accountId: result._id,
+      fullName: "",
+      phoneNumber: "",
+      dayOfBirth: "",
+      gender: "",
+      address: "",
+    }
+
+    await userRepository.createUserInformation({...user, ...userData});
       
     return {
       status: Status.Success,
