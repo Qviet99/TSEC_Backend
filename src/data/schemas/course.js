@@ -20,6 +20,13 @@ const CourseSchema = new Schema({
     required: true,
   },
   price: {type: Number, required: true},
-}, {timestamps: true});
+}, {timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true }});
+
+CourseSchema.virtual('owner', {
+  ref: 'User',
+  localField: 'ownerId',
+  foreignField: 'accountId',
+  justOne: true
+});
 
 export default mongoose.model('Course', CourseSchema); 

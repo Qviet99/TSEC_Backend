@@ -22,8 +22,9 @@ const courseRepository = {
   getAllCourse: async(levelId) => {
     let query = null;
     if (levelId) query = {courseLevelId: levelId};
-    const result = await Course.find(query);
+    const result = await Course.find(query).populate({ path: 'courseLevelId', select: 'levelName' }).populate({ path: 'owner', select: 'fullName'});
 
+    console.log(result);
     return result;
   },
 
