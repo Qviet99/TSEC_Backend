@@ -61,7 +61,7 @@ const authController = {
 
   deleteImageUrl: async(req, res, next) => {
     const {id} = req.params;
-    const result = await authService.deleteAccount(id);
+    const result = await authService.deleteImageUrl(id);
 
     return res.send(result);
   }
