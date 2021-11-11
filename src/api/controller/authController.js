@@ -57,6 +57,14 @@ const authController = {
 
     return res.send(result);
   },
+
+
+  deleteImageUrl: async(req, res, next) => {
+    const {id} = req.params;
+    const result = await authService.deleteAccount(id);
+
+    return res.send(result);
+  }
 }
 
 export default authController

@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import authRepository from '../data/repositories/authRepository.js';
 import userRepository from '../data/repositories/userRepository.js';
 import {Status} from '../api/status.js';
+import cloudinary from 'cloudinary';
 
 const authService = {
   login: async(account) => {
@@ -145,6 +146,12 @@ const authService = {
       status: Status.Success,
     };
   },
+
+  deleteImageUrl: async(id) => {
+    const result = await cloudinary.v2.uploader.destroy(id);
+
+    return result;
+  }
 }
 
 export default authService;
