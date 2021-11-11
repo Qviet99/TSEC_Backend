@@ -5,6 +5,12 @@ import userRepository from '../data/repositories/userRepository.js';
 import {Status} from '../api/status.js';
 import cloudinary from 'cloudinary';
 
+cloudinary.v2.config({ 
+  cloud_name: 'dadfrogge', 
+  api_key: '298641532422734', 
+  api_secret: 'I3SrVfkDmYLkMT-v6-oACsih9is' 
+});
+
 const authService = {
   login: async(account) => {
     const {username, password} = account;
