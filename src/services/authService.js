@@ -154,6 +154,8 @@ const authService = {
   },
 
   deleteImageUrl: async(id) => {
+    if (id === 'cbsjxuqbsjwni4dysbam') return;
+
     const result = await cloudinary.v2.uploader.destroy(id);
 
     return result;
