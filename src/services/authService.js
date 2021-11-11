@@ -22,7 +22,6 @@ const authService = {
       email: result.email,
       username: result.username,
       role: result.role,
-      avatarUrl: result.avatarUrl,
     }
       
     if(!password === result.password) {
@@ -146,7 +145,6 @@ function generateToken(
     {
       user: {_id: user._id, email: user.email, username: user.username},
       role: user.role,
-      avatarUrl: user.avatarUrl,
     },
     'C2SE05_TSEC',
     {
