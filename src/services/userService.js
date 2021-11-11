@@ -30,10 +30,10 @@ const userService = {
     };
   },
 
-  updateUserInformation: async(id, user, email) => {
+  updateUserInformation: async(id, user, account) => {
     const result = await userRepository.updateUserInformation(id, user);
 
-    if (email) await authRepository.updateAccountById(user.accountId, email);
+    if (account.email || account.avatar) await authRepository.updateAccountById(user.accountId, account);
       
     return {
       status: Status.Success,
