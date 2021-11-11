@@ -16,6 +16,13 @@ const authController = {
     return res.send(result);
   },
 
+  getUserAvatarUrl: async(req, res , next) => {
+    const {id} = req.params;
+    const result = await authService.getUserAvatarUrl(id);
+
+    return res.send(result);
+  },
+
   //Read
   getAccount: async(req, res , next) => {
     const {id} = req.params;

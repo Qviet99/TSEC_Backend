@@ -40,6 +40,17 @@ const authService = {
       }
     }
   },
+
+  getUserAvatarUrl: async(id) => {
+    const result = await authRepository.getAccountById(id);
+
+    return {
+      status: Status.Success,
+      result: {
+        avatarUrl: result.avatarUrl,
+      }
+    }
+  },
   
   createAccount: async(account) => {
     const {registerData, userData} = account;
