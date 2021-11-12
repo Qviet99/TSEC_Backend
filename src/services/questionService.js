@@ -37,8 +37,6 @@ const questionService = {
         message: 'Number of answer choices for question must be at least 2',
       };
     };
-    
-    console.log(question.answerChoices.includes(question.answerRight));
 
     if (!question.answerChoices.includes(question.answerRight)) {
       return {

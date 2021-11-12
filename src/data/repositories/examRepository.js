@@ -14,7 +14,7 @@ const examRepository = {
   },
 
   getExamByQuestionId: async(questionId) => {
-    const result = await Exam.find({questionIds: questionId});
+    const result = await Exam.find({questionIds: questionId}).populate({path: 'questionIds', select: 'questionContent answerChoices'});
 
     return result;
   },
