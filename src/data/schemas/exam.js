@@ -8,6 +8,13 @@ const ExamSchema = new Schema({
     required: true,
   }],
   examTime: {type: String, required: true},
-}, {timestamps: true});
+}, {timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true }});
+
+ExamSchema.virtual('questionList', {
+  ref: 'Question',
+  localField: 'questionIds',
+  foreignField: '_id',
+});
+
 
 export default mongoose.model('Exam', ExamSchema); 
