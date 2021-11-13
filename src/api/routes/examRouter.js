@@ -8,6 +8,8 @@ const router = express.Router();
 
 router.post('/', joiValidator(JoiValidationSchema.exam, JoiSchema.exam), isAdmin, wrapper(examController.createExam));
 
+router.post('/:id', wrapper(examController.getExamResult));
+
 router.get('/', wrapper(examController.getAllExam));
 
 router.get('/:id', wrapper(examController.getExam));

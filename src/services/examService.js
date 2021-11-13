@@ -1,5 +1,7 @@
 import questionRepository from '../data/repositories/questionRepository.js';
 import examRepository from '../data/repositories/examRepository.js';
+import courseRepository from '../data/repositories/courseRepository.js';
+import levelRepository from '../data/repositories/levelRepository.js';
 import {Status} from '../api/status.js';
 
 const examService = {
@@ -41,6 +43,43 @@ const examService = {
     return {
       status: Status.Success,
       result,
+    };
+  },
+
+  getExamResult: async(id, data) => {
+    let mark = 0;
+    let totalMark = 0;
+    let message;
+    let courses = [];
+
+    const exam = await examRepository.getExamById(id);
+
+    if (exam.questionIds.length > 0) {
+      for (const questionId of exam.questionIds) {
+        const question = await questionRepository.getQuestionById(questionId._id);
+
+        totalMark = totalMark + question.mark;
+        data.forEach(value => {
+          if (value._id === question._id.toString() && value.answer === question.answerRight) {
+            mark = mark + question.mark;
+          }
+        })
+      }
+    }
+
+    const courseLevel = await levelRepository.getLevelByMark(mark + 50);
+
+    if (!courseLevel) message = 'Currently there are no Course suitable for you';
+    else courses = await courseRepository.getAllCourseByLevelId(courseLevel._id);
+
+    return {
+      status: Status.Success,
+      result: {
+        totalMark,
+        mark,
+        courses,
+        message,
+      },
     };
   },
 

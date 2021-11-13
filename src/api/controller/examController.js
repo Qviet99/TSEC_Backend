@@ -10,6 +10,14 @@ const examController = {
     return res.send(result);
   },
 
+  getExamResult: async(req, res , next) => {
+    const {id} = req.params;
+    const {data} = req.body;
+    const result = await examService.getExamResult(id, data);
+
+    return res.send(result);
+  },
+
   //Read
   getExam: async(req, res , next) => {
     const {id} = req.params;
