@@ -7,10 +7,7 @@ const AccountSchema = new Schema({
   email: {type: String, required: true},
   role: {type: String, required: true},
   avatarUrl: {type: String, required: true},
-  lastExamResult: {
-    mark: {type: String},
-    time: {type: String},
-  },
+  lastExamResult: {type: String},
   registeredCourses: [{
     type: Schema.Types.ObjectId,
     ref: 'Course',
