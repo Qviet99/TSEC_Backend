@@ -13,7 +13,8 @@ const examController = {
   getExamResult: async(req, res , next) => {
     const {id} = req.params;
     const {data} = req.body;
-    const result = await examService.getExamResult(id, data);
+    const userId = req.user._id;
+    const result = await examService.getExamResult(userId, id, data);
 
     return res.send(result);
   },

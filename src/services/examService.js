@@ -2,6 +2,7 @@ import questionRepository from '../data/repositories/questionRepository.js';
 import examRepository from '../data/repositories/examRepository.js';
 import courseRepository from '../data/repositories/courseRepository.js';
 import levelRepository from '../data/repositories/levelRepository.js';
+import authRepository from '../data/repositories/authRepository.js';
 import {Status} from '../api/status.js';
 
 const examService = {
@@ -46,7 +47,7 @@ const examService = {
     };
   },
 
-  getExamResult: async(id, data) => {
+  getExamResult: async(userId, id, data) => {
     let mark = 0;
     let totalMark = 0;
     let message;
@@ -71,6 +72,10 @@ const examService = {
 
     if (!courseLevel) message = 'Currently there are no Course suitable for you';
     else courses = await courseRepository.getAllCourseByLevelId(courseLevel._id);
+
+    const latestTestResult = `${mark}/${totalMark}`;
+
+    await authRepository.updateAccountById(userId, {lastExamResult: latestTestResult});
 
     return {
       status: Status.Success,
