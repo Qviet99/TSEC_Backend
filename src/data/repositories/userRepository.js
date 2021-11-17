@@ -8,7 +8,7 @@ const userRepository = {
   },
 
   getUserInformationByAccountId: async (accountId) => {
-    const result = await User.findOne({accountId});
+    const result = await User.findOne({accountId}).populate({path: 'accountId', select: 'lastExamResult'});
 
     return result;
   },
