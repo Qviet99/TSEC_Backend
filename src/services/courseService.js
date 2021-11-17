@@ -1,6 +1,6 @@
 import courseRepository from '../data/repositories/courseRepository.js';
 import levelRepository from '../data/repositories/levelRepository.js';
-import authRepository from '../data/repositories/authRepository';
+import authRepository from '../data/repositories/authRepository.js';
 import {Status} from '../api/status.js';
 
 const courseService = {
