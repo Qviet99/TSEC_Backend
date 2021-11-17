@@ -10,6 +10,15 @@ const courseController = {
     return res.send(result);
   },
 
+  //Buy Course
+  registerCourse: async(req, res , next) => {
+    const {id} = req.params;
+    const userId = req.user._id;
+    const result = await courseService.registerCourseForUser(userId, id);
+
+    return res.send(result);
+  },
+
   //Read
   getCourse: async(req, res , next) => {
     const {id} = req.params;

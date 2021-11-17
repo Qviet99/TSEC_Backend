@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.post('/', joiValidator(JoiValidationSchema.course, JoiSchema.course), wrapper(courseController.createCourse));
 
+router.post('/user-buy-course/:id', wrapper(courseController.registerCourse));
+
 router.get('/', wrapper(courseController.getAllCourse));
 
 router.get('/registeredCourses', wrapper(courseController.getAllRegisteredCourses));

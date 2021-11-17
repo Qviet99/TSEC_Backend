@@ -1,5 +1,6 @@
 import courseRepository from '../data/repositories/courseRepository.js';
 import levelRepository from '../data/repositories/levelRepository.js';
+import authRepository from '../data/repositories/authRepository';
 import {Status} from '../api/status.js';
 
 const courseService = {
@@ -28,6 +29,34 @@ const courseService = {
     return {
       status: Status.Success,
       result,
+    };
+  },
+
+  registerCourseForUser: async(userId, id) => {
+    const userAccount = await authRepository.getAccountById(userId);
+
+    if (!userAccount) {
+      return {
+        status: Status.Fail,
+        message: 'Account not exist',
+      };  
+    }
+
+    const {registeredCourses} = userAccount;
+
+    const hasNotBought = registeredCourses.every((id) => id.toString() !== id.toString());
+
+    if (!hasNotBought) {
+      return {
+        status: Status.Fail,
+        message: 'Already bought the course',
+      };  
+    }
+
+    await authRepository.updateAccountById(userId, {registeredCourses: [...registeredCourses, id]});
+
+    return {
+      status: Status.Success,
     };
   },
   
