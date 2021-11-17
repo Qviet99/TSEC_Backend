@@ -37,8 +37,9 @@ const courseController = {
 
   //Read All Register Course
   getAllRegisteredCourses: async(req, res , next) => {
-    const {registeredCourses} = req.body;
-    const result = await courseService.getAllRegisteredCourses(registeredCourses);
+    const userId = req.user._id;
+
+    const result = await courseService.getAllRegisteredCourses(userId);
 
     return res.send(result);
   },

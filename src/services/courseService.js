@@ -78,8 +78,10 @@ const courseService = {
     };
   },
 
-  getAllRegisteredCourses: async(registeredCourses) => {
-    const result = await courseRepository.getAllRegisteredCourses(registeredCourses);
+  getAllRegisteredCourses: async(userId) => {
+    const userAccount = await authRepository.getAccountById(userId);
+
+    const result = userAccount.registeredCourses;
       
     return {
       status: Status.Success,
