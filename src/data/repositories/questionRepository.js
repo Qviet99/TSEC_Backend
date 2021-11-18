@@ -32,7 +32,7 @@ const questionRepository = {
   },
   
   getAllQuestion: async() => {
-    const result = await Question.find();
+    const result = await Question.find().sort('-createdAt');
   
     return result;
   },
