@@ -59,12 +59,14 @@ const examService = {
       for (const questionId of exam.questionIds) {
         const question = await questionRepository.getQuestionById(questionId._id);
 
-        totalMark = totalMark + question.mark;
-        data.forEach(value => {
-          if (value._id === question._id.toString() && value.answer === question.answerRight) {
-            mark = mark + question.mark;
-          }
-        })
+        if (question) {
+          totalMark = totalMark + question.mark;
+          data.forEach(value => {
+            if (value._id === question._id.toString() && value.answer === question.answerRight) {
+              mark = mark + question.mark;
+            }
+          })
+        }
       }
     }
 

@@ -165,30 +165,22 @@ const questionService = {
     const exercises = await exerciseRepository.getExerciseByQuestionId(id);
 
     if (exercises.length > 0) {
-      for (const exerciseId of exercises) {
-        const exercise = await exerciseRepository.getExerciseById(exerciseId);
-  
-        if (exercise) {
-          const {questionIds} = exercise
-          const newQuestionIds = questionIds.filter((questionId) => questionId !== id);
+      for (const exercise of exercises) {
+        const {questionIds} = exercise
+        const newQuestionIds = questionIds.filter((questionId) => questionId.toString() !== id.toString());
 
-          await exerciseRepository.updateExerciseById(exerciseId, {...exercise, questionIds: newQuestionIds});
-        }
+        await exerciseRepository.updateExerciseById(exercise._id, {...exercise, questionIds: newQuestionIds});
       };
     }
 
     const exams = await examRepository.getExamByQuestionId(id);
 
     if (exams.length > 0) {
-      for (const examId of exams) {
-        const exam = await examRepository.getExamById(examId);
-  
-        if (exam) {
-          const {questionIds} = exam
-          const newQuestionIds = questionIds.filter((questionId) => questionId !== id);
+      for (const exam of exams) {
+        const {questionIds} = exam
+        const newQuestionIds = questionIds.filter((questionId) => questionId.toString() !== id.toString());
 
-          await examRepository.updateExamById(examId, {...exam, questionIds: newQuestionIds});
-        }
+        await examRepository.updateExamById(exam._id, {...exam, questionIds: newQuestionIds});
       };
     }
 
