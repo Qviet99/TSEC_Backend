@@ -176,7 +176,7 @@ function generateToken(
     {
       issuer: 'TSEC',
       audience: 'client',
-      expiresIn: '24h',
+      expiresIn: '72h',
     },
   );
 }
