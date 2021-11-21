@@ -8,7 +8,7 @@ const examRepository = {
   },
 
   getExamById: async(id) => {
-    const result = await Exam.findById(id).populate({path: 'questionList', select: 'questionContent answerChoices'});
+    const result = await Exam.findById(id).populate({path: 'questionList', select: 'questionContent answerChoices mark'});
 
     return result;
   },

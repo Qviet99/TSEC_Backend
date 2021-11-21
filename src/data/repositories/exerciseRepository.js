@@ -8,7 +8,7 @@ const exerciseRepository = {
   },
 
   getExerciseById: async(id) => {
-    const result = await Exercise.findById(id);
+    const result = await Exercise.findById(id).populate({path: 'questionList', select: 'questionContent answerChoices mark'});
 
     return result;
   },

@@ -7,6 +7,13 @@ const ExerciseSchema = new Schema({
     ref: 'Question',
     required: true,
   }],
-}, {timestamps: true});
+}, {timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true }});
+
+ExerciseSchema.virtual('questionList', {
+  ref: 'Question',
+  localField: 'questionIds',
+  foreignField: '_id',
+});
+
 
 export default mongoose.model('Exercise', ExerciseSchema); 
