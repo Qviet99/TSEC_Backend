@@ -74,6 +74,7 @@ export const JoiValidationSchema = {
   question: Joi.object({
     topicId: Joi.string().required(),
     type: Joi.string().required(),
+    questionDocumentId: Joi.string().required().allow('', null),
     questionContent: Joi.string().required(),
     answerChoices: Joi.array().items(Joi.string().required()),
     answerRight: Joi.string(),

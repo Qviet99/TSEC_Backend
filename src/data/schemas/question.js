@@ -8,6 +8,10 @@ const QuestionSchema = new Schema({
     required: true,
   },
   type: {type: String, required: true},
+  questionDocumentId: {
+    type: Schema.Types.ObjectId,
+    ref: 'QuestionDocument',
+  } ,
   questionContent: {type: String, required: true},
   answerChoices: [{type: String, required: true}],
   answerRight: {type: String, required: true},
