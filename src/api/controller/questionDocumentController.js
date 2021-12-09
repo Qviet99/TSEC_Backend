@@ -24,6 +24,18 @@ const questionDocumentController = {
     return res.send(result);
   },
 
+  getAllReadingDocuments: async(req, res , next) => {
+    const result = await questionDocumentService.getAllReadingDocuments();
+  
+    return res.send(result);
+  },
+
+  getAllListeningDocuments: async(req, res , next) => {
+    const result = await questionDocumentService.getAllListeningDocuments();
+  
+    return res.send(result);
+  },
+
   //Update 
   updateQuestionDocument: async(req, res , next) => {
     const documentId = req.params.id;

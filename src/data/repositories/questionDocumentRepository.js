@@ -1,4 +1,4 @@
-import QuestionDocument from '../schemas/questionDocument';
+import QuestionDocument from '../schemas/questionDocument.js';
 
 const questionDocumentRepository = {
   createDocument: async(content) => {
@@ -16,6 +16,18 @@ const questionDocumentRepository = {
   
   getAllDocuments: async() => {
     const result = await QuestionDocument.find();
+  
+    return result;
+  },
+
+  getAllReadingDocuments: async() => {
+    const result = await QuestionDocument.find({documentType: "reading"});
+  
+    return result;
+  },
+
+  getAllListeningDocuments: async() => {
+    const result = await QuestionDocument.find({documentType: "listening"});
   
     return result;
   },

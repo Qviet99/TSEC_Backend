@@ -159,7 +159,13 @@ const authService = {
     const result = await cloudinary.v2.uploader.destroy(id);
 
     return result;
-  }
+  },
+
+  deleteAudioUrl: async(id) => {
+    const result = await cloudinary.v2.uploader.destroy(id);
+
+    return result;
+  },
 }
 
 export default authService;

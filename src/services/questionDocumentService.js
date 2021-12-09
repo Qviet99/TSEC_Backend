@@ -36,6 +36,24 @@ const questionDocumentService = {
     };
   },
 
+  getAllReadingDocuments: async() => {
+    const result = await questionDocumentRepository.getAllReadingDocuments();
+  
+    return {
+      status: Status.Success,
+      result,
+    };;
+  },
+  
+  getAllListeningDocuments: async() => {
+    const result = await questionDocumentRepository.getAllListeningDocuments();
+  
+    return {
+      status: Status.Success,
+      result,
+    };;
+  },
+
   updateDocumentById: async(id, data) => {
     const result = await questionDocumentRepository.getDocumentById(id);
 

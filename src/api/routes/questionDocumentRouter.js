@@ -7,6 +7,10 @@ const router = express.Router();
 
 router.post('/', isAdmin, wrapper(questionDocumentController.createQuestionDocument));
 
+router.get('/reading', wrapper(questionDocumentController.getAllReadingDocuments));
+
+router.get('/listening', wrapper(questionDocumentController.getAllListeningDocuments));
+
 router.get('/', wrapper(questionDocumentController.getAllQuestionDocuments));
 
 router.get('/:id', wrapper(questionDocumentController.getQuestionDocument));

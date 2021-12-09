@@ -64,7 +64,14 @@ const authController = {
     const result = await authService.deleteImageUrl(id);
 
     return res.send(result);
-  }
+  },
+
+  deleteAudioUrl: async(req, res, next) => {
+    const {id} = req.params;
+    const result = await authService.deleteAudioUrl(id);
+
+    return res.send(result);
+  },
 }
 
 export default authController
