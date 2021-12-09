@@ -69,6 +69,15 @@ const questionService = {
     };
   },
 
+  getDocumentQuestionByDocId: async(documentId) => {
+    const result = await questionRepository.getDocumentQuestionByDocId(documentId);
+
+    return {
+      status: Status.Success,
+      result,
+    };
+  },
+
   getAllExamTypeQuestion: async() => {
     const result = await questionRepository.getAllExamTypeQuestion();
 

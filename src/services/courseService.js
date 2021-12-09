@@ -44,7 +44,7 @@ const courseService = {
 
     const {registeredCourses} = userAccount;
 
-    const hasNotBought = registeredCourses.every((id) => id.toString() !== id.toString());
+    const hasNotBought = registeredCourses.every((_id) => _id.toString() !== id.toString());
 
     if (!hasNotBought) {
       return {

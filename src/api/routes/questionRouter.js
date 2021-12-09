@@ -14,6 +14,8 @@ router.get('/exam', isAdmin, wrapper(questionController.getAllExamTypeQuestion))
 
 router.get('/exercise', isAdmin, wrapper(questionController.getAllExerciseTypeQuestion));
 
+router.get('/document/:id', isAdmin, wrapper(questionController.getDocumentQuestion));
+
 router.get('/:id', isAdmin, wrapper(questionController.getQuestion));
 
 router.patch('/:id', joiValidator(JoiValidationSchema.question, JoiSchema.question), isAdmin, wrapper(questionController.updateQuestion));

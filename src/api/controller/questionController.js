@@ -23,6 +23,13 @@ const questionController = {
     return res.send(result);
   },
 
+  getDocumentQuestion: async(req, res , next) => {
+    const {id} = req.params;
+    const result = await questionService.getDocumentQuestionByDocId(id);
+
+    return res.send(result);
+  },
+
   //Read All Exam Type Question
   getAllExamTypeQuestion: async(req, res , next) => {
     const result = await questionService.getAllExamTypeQuestion();

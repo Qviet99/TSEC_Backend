@@ -13,6 +13,12 @@ const questionRepository = {
     return result;
   },
 
+  getDocumentQuestionByDocId: async(documentId) => {
+    const result = await Question.find({questionDocumentId: documentId});
+
+    return result;
+  },
+
   getQuestionByContent: async(questionContent) => {
     const result = await Question.findOne({questionContent});
 
