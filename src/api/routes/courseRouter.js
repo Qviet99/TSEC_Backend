@@ -11,6 +11,8 @@ router.get('/', wrapper(courseController.getAllCourse));
 
 router.get('/registeredCourses', wrapper(courseController.getAllRegisteredCourses));
 
+router.get('/userBoughtCourses', wrapper(courseController.getAllUserBoughtCourses));
+
 router.get('/userCourses', wrapper(courseController.getAllCourseOfUser));
 
 router.get('/suggestionCourses/:mark', wrapper(courseController.getSuggestionCourses));

@@ -27,6 +27,12 @@ const courseRepository = {
     return result;
   },
 
+  getAllUserBoughtCourses: async(courseIds) => {
+    const result = await Course.find({_id: [...courseIds]}).populate({ path: 'courseLevelId', select: 'levelName' }).populate({ path: 'owner', select: 'fullName'});
+
+    return result;
+  },
+
   getAllCourseOfUser: async(ownerId) => {
     const result = await Course.find({ownerId}).populate({ path: 'courseLevelId', select: 'levelName' }).populate({ path: 'owner', select: 'fullName'});
 

@@ -88,6 +88,19 @@ const courseService = {
       result,
     };
   },
+
+  getAllUserBoughtCourses: async(userId) => {
+    const userAccount = await authRepository.getAccountById(userId);
+
+    const courseIds = userAccount.registeredCourses;
+
+    const result = await courseRepository.getAllUserBoughtCourses(courseIds);
+      
+    return {
+      status: Status.Success,
+      result,
+    };
+  },
   
   getAllCourseOfUser: async(id) => {
     const result = await courseRepository.getAllCourseOfUser(id);

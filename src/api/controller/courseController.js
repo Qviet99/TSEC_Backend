@@ -44,6 +44,14 @@ const courseController = {
     return res.send(result);
   },
 
+  getAllUserBoughtCourses: async(req, res , next) => {
+    const userId = req.user._id;
+
+    const result = await courseService.getAllUserBoughtCourses(userId);
+
+    return res.send(result);
+  },
+
   //Read All Of Current User
   getAllCourseOfUser: async(req, res , next) => {
     const result = await courseService.getAllCourseOfUser(req.user._id);
