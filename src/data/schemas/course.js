@@ -1,14 +1,19 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
+export const Video = new Schema(
+  {
+    videoName: {type: String},
+    videoUrl: {type: String},
+  },
+  {_id: false},
+);
+
 const CourseSchema = new Schema({
   courseName: {type: String, required: true},
   courseDescription: {type: String, required: true},
   courseThumbnail: {type: String},
-  courseVideos: [{
-    videoName: {type: String},
-    videoUrl: {type: String},
-  }],
+  courseVideos: [Video],
   courseLevelId: {
     type: Schema.Types.ObjectId,
     ref: 'Level',

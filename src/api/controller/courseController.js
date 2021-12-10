@@ -71,7 +71,7 @@ const courseController = {
   updateCourse: async(req, res , next) => {
     const {id} = req.params;
     const {course} = req.body;
-    const result = await courseService.updateCourse(id, req.user._id , course);
+    const result = await courseService.updateCourse(id , course);
 
     return res.send(result);
   },
@@ -79,7 +79,8 @@ const courseController = {
   //Delete
   deleteCourse: async(req, res , next) => {
     const {id} = req.params;
-    const result = await courseService.deleteCourse(id, req.user._id);
+
+    const result = await courseService.deleteCourse(id);
 
     return res.send(result);
   },

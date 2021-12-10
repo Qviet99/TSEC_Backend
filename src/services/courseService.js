@@ -129,7 +129,7 @@ const courseService = {
     };
   },
 
-  updateCourse: async(id, userId, course) => {
+  updateCourse: async(id, course) => {
     const courseExist = await courseRepository.getCourseById(id);
 
     if (!courseExist) {
@@ -139,23 +139,7 @@ const courseService = {
       };  
     }
 
-    if (userId.toString() !== course.ownerId.toString()) {
-      return {
-        status: Status.Fail,
-        message: 'User Do Not Have Permission',
-      };     
-    }
-
-    const {courseName, courseLevelId} = course;
-
-    const courseNameExist = await courseRepository.getCourseByName(courseName);
-
-    if (courseNameExist && courseNameExist._id.toString() !== id) {
-      return {
-        status: Status.Fail,
-        message: 'Course Name Already Exist',
-      };      
-    }
+    const {courseLevelId} = course;
 
     const levelExist = await levelRepository.getLevelById(courseLevelId);
     
@@ -173,7 +157,7 @@ const courseService = {
     };
   },
 
-  deleteCourse: async(id, userId) => {
+  deleteCourse: async(id) => {
     const courseExist = await courseRepository.getCourseById(id);
 
     if (!courseExist) {
@@ -181,13 +165,6 @@ const courseService = {
         status: Status.Fail,
         message: 'Course Not Exist',
       };  
-    }
-
-    if (userId.toString() !== courseExist.ownerId.toString()) {
-      return {
-        status: Status.Fail,
-        message: 'User Do Not Have Permission',
-      };     
     }
 
     await courseRepository.deleteCourseById(id);
