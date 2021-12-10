@@ -10,7 +10,7 @@ const authController = {
 
   createAccountByAdmin: async(req, res , next) => {
     const {account} = req.body;
-    const result = await authService.createAccount(account);
+    const result = await authService.createAccountByAdmin(account);
 
     return res.send(result);
   },
