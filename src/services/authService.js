@@ -73,10 +73,10 @@ const authService = {
 
     const user = {
       accountId: result._id,
-      fullName: "",
-      phoneNumber: "",
+      fullName: "new Account",
+      phoneNumber: "0800000000",
       dayOfBirth: new Date(),
-      gender: "",
+      gender: "male",
       address: "",
     }
 
