@@ -58,6 +58,35 @@ const authService = {
       }
     }
   },
+
+  createAccountByAdmin: async(account) => {
+    const isAccountExist = await authRepository.getAccountByUsername(account.username);
+
+    if (isAccountExist) {
+      return {
+        status: Status.Fail,
+        message: 'username already exist',
+      };
+    }
+
+    const result = await authRepository.createAccount({...account});
+
+    const user = {
+      accountId: result._id,
+      fullName: "",
+      phoneNumber: "",
+      dayOfBirth: new Date(),
+      gender: "",
+      address: "",
+    }
+
+    await userRepository.createUserInformation({...user});
+      
+    return {
+      status: Status.Success,
+      result,
+    };
+  },
   
   createAccount: async(account) => {
     const {registerData, userData} = account;

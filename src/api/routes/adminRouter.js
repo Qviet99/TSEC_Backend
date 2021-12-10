@@ -5,6 +5,8 @@ import {isAdmin} from '../middleware/isAdmin.js';
 
 const router = express.Router();
 
+router.post('/', isAdmin, wrapper(authController.createAccountByAdmin));
+
 router.get('/', isAdmin, wrapper(authController.getAllAccount));
 
 router.get('/:id', isAdmin, wrapper(authController.getAccount));

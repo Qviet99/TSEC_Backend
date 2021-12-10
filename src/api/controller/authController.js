@@ -8,6 +8,13 @@ const authController = {
     return res.send(result);
   },
 
+  createAccountByAdmin: async(req, res , next) => {
+    const {account} = req.body;
+    const result = await authService.createAccount(account);
+
+    return res.send(result);
+  },
+
   //Create
   createAccount: async(req, res , next) => {
     const {account} = req.body;
