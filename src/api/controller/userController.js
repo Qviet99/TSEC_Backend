@@ -12,7 +12,7 @@ const userController = {
   },
 
   getAllUser: async(req, res , next) => {
-    const result = await userService.getAllUser(id);
+    const result = await userService.getAllUser();
 
     return res.send(result);
   },
