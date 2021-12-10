@@ -11,6 +11,12 @@ const userController = {
     return res.send(result);
   },
 
+  getAllUser: async(req, res , next) => {
+    const result = await userService.getAllUser(id);
+
+    return res.send(result);
+  },
+
   //Read
   getUserInformation: async(req, res , next) => {
     const {id} = req.params;

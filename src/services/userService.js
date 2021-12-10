@@ -20,6 +20,15 @@ const userService = {
       result,
     };
   },
+
+  getAllUser: async() => {
+    const result = await userRepository.getAllUser();
+      
+    return {
+      status: Status.Success,
+      result,
+    };
+  },
   
   getUserInformation: async(accountId) => {
     const result = await userRepository.getUserInformationByAccountId(accountId);

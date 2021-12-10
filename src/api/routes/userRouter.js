@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.post('/', joiValidator(JoiValidationSchema.user, JoiSchema.user), wrapper(userController.createUserInformation));
 
+router.get('/', wrapper(userController.getAllUser));
+
 router.get('/:id', wrapper(userController.getUserInformation));
 
 router.patch('/:id', joiValidator(JoiValidationSchema.user, JoiSchema.user), wrapper(userController.updateUserInformation));

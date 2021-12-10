@@ -7,6 +7,12 @@ const userRepository = {
     return result;
   },
 
+  getAllUser: async () => {
+    const result = await User.find().populate({path: 'accountId', select: 'fullName'});;
+
+    return result;
+  },
+
   getUserInformationByAccountId: async (accountId) => {
     const result = await User.findOne({accountId}).populate({path: 'accountId', select: 'lastExamResult'});
 
