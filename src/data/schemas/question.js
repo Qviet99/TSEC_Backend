@@ -11,7 +11,8 @@ const QuestionSchema = new Schema({
   questionDocumentId: {
     type: Schema.Types.ObjectId,
     ref: 'QuestionDocument',
-  } ,
+    required: false,
+  },
   questionContent: {type: String, required: true},
   answerChoices: [{type: String, required: true}],
   answerRight: {type: String, required: true},
