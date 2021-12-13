@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post('/', joiValidator(JoiValidationSchema.exercise, JoiSchema.exercise), isAdmin, wrapper(exerciseController.createExercise));
 
-router.get('/', isAdmin, wrapper(exerciseController.getAllExercise));
+router.get('/', wrapper(exerciseController.getAllExercise));
 
 router.get('/:id', wrapper(exerciseController.getExercise));
 
