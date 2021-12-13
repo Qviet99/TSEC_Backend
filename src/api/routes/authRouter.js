@@ -16,4 +16,6 @@ router.delete('/cloudinary-delete-image/:id', wrapper(authController.deleteImage
 
 router.delete('/cloudinary-delete-audio/:id', wrapper(authController.deleteAudioUrl));
 
+router.delete('/cloudinary-delete-video/:id', wrapper(authController.deleteVideoUrl));
+
 export default router;

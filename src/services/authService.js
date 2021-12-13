@@ -191,7 +191,13 @@ const authService = {
   },
 
   deleteAudioUrl: async(id) => {
-    const result = await cloudinary.v2.uploader.destroy(id);
+    const result = await cloudinary.v2.uploader.destroy(id, {resource_type: "audio"});
+
+    return result;
+  },
+
+  deleteVideoUrl: async(id) => {
+    const result = await cloudinary.v2.uploader.destroy(id, {resource_type: "video"});
 
     return result;
   },

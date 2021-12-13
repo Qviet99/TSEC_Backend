@@ -79,6 +79,13 @@ const authController = {
 
     return res.send(result);
   },
+
+  deleteVideoUrl: async(req, res, next) => {
+    const {id} = req.params;
+    const result = await authService.deleteVideoUrl(id);
+
+    return res.send(result);
+  },
 }
 
 export default authController
