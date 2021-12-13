@@ -10,6 +10,15 @@ const exerciseController = {
     return res.send(result);
   },
 
+  getExerciseResult: async(req, res , next) => {
+    const {id} = req.params;
+    const {data} = req.body;
+
+    const result = await exerciseService.getExerciseResult(id, data);
+  
+    return res.send(result);
+  }, 
+
   //Read
   getExercise: async(req, res , next) => {
     const {id} = req.params;

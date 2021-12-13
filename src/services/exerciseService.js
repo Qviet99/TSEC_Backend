@@ -44,6 +44,43 @@ const exerciseService = {
     };
   },
 
+  getExerciseResult: async(id ,data) => {
+    const exercise = await exerciseRepository.getExerciseById(id);
+
+    let mark = 0;
+    let totalMark = 0;
+
+    if (!exercise) {
+      return {
+        status: Status.Fail,
+        message: 'Exercise not exist',
+      };
+    }
+
+    if (exercise.questionIds.length > 0) {
+      for (const questionId of exercise.questionIds) {
+        const question = await questionRepository.getQuestionById(questionId._id);
+
+        if (question) {
+          totalMark = totalMark + question.mark;
+          data.forEach(value => {
+            if (value._id === question._id.toString() && value.answer === question.answerRight) {
+              mark = mark + question.mark;
+            }
+          })
+        }
+      }
+    }
+
+    return {
+      status: Status.Success,
+      result:{
+        totalMark,
+        mark,
+      },
+    };
+  },
+
   getExerciseById: async(exerciseId) => {
     const result = await exerciseRepository.getExerciseById(exerciseId);
 
