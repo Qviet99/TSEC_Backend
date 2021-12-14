@@ -70,20 +70,21 @@ const examService = {
       }
     }
 
-    const courseLevel = await levelRepository.getLevelByMark(mark + 50);
+    const resultRatio = mark * 1000 / totalMark;
+
+    const realMark = getDozen(resultRatio);
+
+    const courseLevel = await levelRepository.getLevelByMark(realMark + 50);
 
     if (!courseLevel) message = 'Currently there are no Course suitable for you';
     else courses = await courseRepository.getAllCourseByLevelId(courseLevel._id);
 
-    const latestTestResult = `${mark}/${totalMark}`;
-
-    await authRepository.updateAccountById(userId, {lastExamResult: latestTestResult});
+    await authRepository.updateAccountById(userId, {lastExamResult: realMark});
 
     return {
       status: Status.Success,
       result: {
-        totalMark,
-        mark,
+        realMark,
         courses,
         message,
       },
@@ -183,3 +184,9 @@ const examService = {
 }
 
 export default examService;
+
+const getDozen = (n) => {
+  var r = n%10;
+  if(r>4) return Math.ceil(n/10) *10;
+  else return Math.floor(n/10) *10;
+}
