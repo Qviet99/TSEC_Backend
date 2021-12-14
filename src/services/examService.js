@@ -226,10 +226,14 @@ const analyze = (choices, nChoices, doc, nDoc, mark) => {
   
   if (mark === 1000) 
     markAnalyze = `Bạn thật giỏi, làm đúng hết đạt 1000/1000`
-  else if (mark > 500 && mark < 1000)
-    markAnalyze = `Khả năng tiếng anh của bạn rất khá có thể cải thiện thêm với các khóa học thuộc mức độ cao cấp và siêu cấp`
-  else if (mark < 500)
-    markAnalyze = 'Tiếng Anh của bạn chỉ đạt mức sơ cấp hãy xem thêm các khóa học phía dưới để cải thiện thêm'
+  if (mark  > 900 && mark < 1000)
+    markAnalyze = `Bạn thật giỏi, làm gần đúng hết rồi nếu bạn muốn điểm cao hơn nữa có thể lựa chọn những khóa siêu cấp`
+  else if (mark >= 600 && mark <= 899)
+    markAnalyze = `Khả năng tiếng anh của bạn rất khá đạt mức độ cao cấp có thể học thêm các khóa học ở mức tương đương hoặc cao hơn để cải thiện`
+  else if (mark >= 300 && mark <= 599)
+    markAnalyze = 'Tiếng Anh của bạn đạt mức trung cấp hãy xem thêm các khóa học ở mức độ tương đương hoặc cao cấp để cải thiện'
+  else if (mark < 300)
+  markAnalyze = 'Tiếng Anh của bạn chỉ đạt mức sơ cập bạn cần cải thiện nhiều đấy hãy xem các khóa học dưới đây'
 
   return `${choiceAnalyze}-${docAnalyze}-${markAnalyze}`
 }
