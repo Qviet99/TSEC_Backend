@@ -206,6 +206,8 @@ const analyze = (choices, nChoices, doc, nDoc, mark) => {
   let choiceAnalyze = ""; 
   let docAnalyze = "";
   let markAnalyze = "";
+  if (mark === 0) return 'Bạn không biết một chút tiếng Anh nào luôn :|'
+
   if (choices === nChoices / 2)
     choiceAnalyze = `khả năng làm trắc nghiệm của bạn ở mức trung bình với ${choices} câu dúng trên tổng thể ${nChoices} câu hỏi`
   else if (choices === nChoices)
